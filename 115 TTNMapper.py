@@ -9,7 +9,6 @@ LED_GPIO = const(2)  # define a constant
 led = machine.Pin(LED_GPIO, mode=machine.Pin.OUT)  # GPIO output
 led = Pin(2, Pin.OUT)
 relay1 = Pin(12, Pin.OUT)
-i2c = SoftI2C(scl=Pin(22), sda=Pin(21), freq=10000)  # ESP32 Dev Board /myown
 uart1 = machine.UART(1, baudrate=9600, rx=25, tx=12, timeout=10)
 uart2 = UART(2, 9600, timeout=300)
 my_gps = MicropyGPS(+7)
@@ -23,8 +22,6 @@ def sendATcommand(ATcommand):
     print(rstr)
     return rstr
 
-#mot = machine.Pin(15)
-#motion = mot.value()
 sendATcommand("AT+CADR=0")
 sendATcommand("AT+CDATARATE=2")
 sendATcommand("AT+CULDLMODE=1")
